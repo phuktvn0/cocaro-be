@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 interface dataUser {
   email: string;
   password: string;
-  _id?: ObjectId;
+  _id: ObjectId;
   name: string;
   isAdmin: boolean;
 }

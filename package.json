@@ -24,6 +24,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongodb-memory-server": "^8.11.0",
     "mongoose": "^6.8.2",
+    "prettier": "^3.3.3",
     "supertest": "^6.3.3",
     "ts-dotenv": "^0.9.0"
   },
@@ -42,6 +43,7 @@
     "build": "npx tsc",
     "start": "node dist/server.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
-    "test": "SET NODE_ENV=test& jest"
+    "test": "SET NODE_ENV=test& jest",
+    "format": "prettier --write \"**/*.(ts|tsx|js|jsx)\""
   }
 }

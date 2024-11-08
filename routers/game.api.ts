@@ -1,17 +1,13 @@
 import express from 'express';
-import {
-  getAllProducts,
-  getOneProduct,
-  createProduct,
-} from '../controllers/post/index';
+
+import { createProduct } from '../controllers/games/index';
 import { protect } from '../middlewares/authentication';
+import updateGame from '../controllers/games/updateGame';
 
 const gameRouter: express.Router = express.Router();
 
-gameRouter.get('/', getAllProducts);
+gameRouter.post('/', protect, createProduct);
 
-gameRouter.get('/:id', getOneProduct);
-
-gameRouter.post('/', protect as any, createProduct as any);
+gameRouter.post('/:id', protect, updateGame);
 
 export default gameRouter;
