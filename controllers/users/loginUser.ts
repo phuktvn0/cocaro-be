@@ -18,9 +18,9 @@ export default async function loginUser(
     if (error) {
       throw createError(httpStatus.BAD_REQUEST, error.message);
     }
-    let { email, password } = value;
+    let { name, password } = value;
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ name });
     if (!user) {
       throw createError(httpStatus.NOT_FOUND, 'User not exists!');
     }
@@ -33,8 +33,6 @@ export default async function loginUser(
     res.json({
       _id: user._id,
       name: user.name,
-      email: user.email,
-      // isAdmin: user.isAdmin,
       token: generateToken(user._id),
     });
   } catch (err) {

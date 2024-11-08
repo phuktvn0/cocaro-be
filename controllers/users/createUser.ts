@@ -19,8 +19,8 @@ export default async function createUser(
       throw createError(httpStatus.BAD_REQUEST, error.message);
     }
 
-    const { email, password } = value;
-    const findUser = await User.findOne({ email });
+    const { name, password } = value;
+    const findUser = await User.findOne({ name });
     if (findUser) {
       throw createError(httpStatus.BAD_REQUEST, 'User already exists!');
     }
@@ -41,8 +41,6 @@ export default async function createUser(
       res.status(201).json({
         _id: user._id,
         name: user.name,
-        email: user.email,
-        // isAdmin: user.isAdmin,
         wins: user.wins,
         losses: user.losses,
         level: user.level,

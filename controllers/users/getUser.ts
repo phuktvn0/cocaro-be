@@ -25,11 +25,9 @@ export default async function getUsers(
       res.json({
         _id: user._id,
         name: user.name,
-        email: user.email,
         wins: user.wins,
         losses: user.losses,
         level: user.level,
-        // isAdmin: user.isAdmin,
       });
     } else {
       res.status(404);
