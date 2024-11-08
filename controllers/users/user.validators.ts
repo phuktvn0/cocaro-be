@@ -15,7 +15,7 @@ export const createUserBodySchema = Joi.object({
     .required(),
   password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
   name: Joi.string().trim().required(),
-  isAdmin: Joi.boolean().default(false),
+  // isAdmin: Joi.boolean().default(false),
 });
 
 export const userIdParamSchema = Joi.object({
