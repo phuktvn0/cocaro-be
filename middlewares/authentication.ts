@@ -24,7 +24,7 @@ function verifyToken(token: string): Promise<jwt.JwtPayload> {
 }
 
 export async function protect(
-  req: express.Request & { user?: any },
+  req: express.Request,
   res: express.Response,
   next: express.NextFunction,
 ) {
@@ -36,12 +36,12 @@ export async function protect(
     const token = tokenString.replace('Bearer ', '');
     const payload = await verifyToken(token);
     const user = await User.findById(payload.id);
-    
+
     if (!user) {
       throw createError(httpStatus.UNAUTHORIZED, 'User not found!');
     }
 
-    req.user = user;
+    req.body.user = user;
     next();
   } catch (error) {
     next(error);
