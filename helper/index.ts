@@ -8,7 +8,7 @@ dotenv.config();
 let mongoDb: MongoMemoryServer;
 const MONGODB_URI: string =
   process.env.MONGO_URI ||
-  'mongodb+srv://phuktvn0:Qq123213@phuktvn0.xwgmvjg.mongodb.net/cocaro';
+  'mongodb+srv://phuktvn0:bNJXvwEsIzTQxkc2@cluster0.filj2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 export const connect = async () => {
   let uri = MONGODB_URI;

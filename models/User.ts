@@ -1,6 +1,4 @@
 import mongoose, { Schema, model, ObjectId } from 'mongoose';
-import bcrypt from 'bcrypt';
-import { number } from 'joi';
 
 interface dataUser {
   _id: ObjectId;
@@ -9,7 +7,7 @@ interface dataUser {
   wins: number;
   losses: number;
   level: number;
-  games: ObjectId[];
+  gamesId: ObjectId[];
 }
 
 //Create schema
@@ -20,7 +18,7 @@ const userSchema = new Schema<dataUser>(
     wins: { type: Number, required: true },
     losses: { type: Number, required: true },
     level: { type: Number, required: true },
-    games: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Game' }],
+    gamesId: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Game' }],
   },
   {
     timestamps: true,

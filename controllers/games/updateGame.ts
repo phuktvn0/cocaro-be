@@ -11,13 +11,13 @@ export default async function updateGame(
   next: express.NextFunction,
 ) {
   try {
+    delete req.body.userId;
     const { error, value } = updateGameBodySchema.validate(req.body, {
       abortEarly: false,
     });
     if (error) {
       throw createError(httpStatus.BAD_REQUEST, error.message);
     }
-
     const updatedGame = await Game.findByIdAndUpdate(
       req.params.id,
       { $set: value },

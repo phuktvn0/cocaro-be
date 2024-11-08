@@ -41,7 +41,7 @@ export async function protect(
       throw createError(httpStatus.UNAUTHORIZED, 'User not found!');
     }
 
-    req.body.user = user;
+    req.body.userId = user.id;
     next();
   } catch (error) {
     next(error);
